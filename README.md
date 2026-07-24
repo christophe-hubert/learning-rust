@@ -1,6 +1,6 @@
 # learning-rust
 Document my rust learning curve
-
+https://github.com/christophe-hubert/learning-rust
 
 Game of life : first projet RUST+WASM
 ===
