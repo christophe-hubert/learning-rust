@@ -1,107 +1,127 @@
 # learning-rust
 Document my rust learning curve
 
+
+Game of life : first projet RUST+WASM
+===
+
+Based on 
+
 https://rustwasm.github.io/docs/book/game-of-life/introduction.html  
 
 
 
 
+Install NVM + latest node
+---
 
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.6/install.sh | bash
 source ~/.zshrc
 nvm -v
-node -v
 nvm install node
-node
 node -v
-npm -v
-npm install npm@latest -g
-mkdir wasm-game-of-life
-cd wasm-game-of-life
-cargo generate --git https://github.com/rustwasm/wasm-pack-template
-wasm-pack build
-cd /home/var/www/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/src/home/var/www/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/tests/var/www/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/.git/home/var/www/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/.github/homewww/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/Cargo.toml/home/var/www/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/SE_APACHE/home/var/www/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/LICENSE_MIT/home/var/www/jamblinnes/rust/wasm-game-of-life/game-of-life/README.md/home/var/www/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/.appveyor.yml/home/var/www/jamblinnes/rust/game-of-life/wasm-game-of-life/.gitignore/home/var/www/jamblinnes/rust/wasm-game-of-life/wasm-game-of-life/.travis.yml
-cd /home/var/www/jamblinnes/rust/wasm-game-of-life
-wasm-pack build
-npm init wasm-app www
-cd www
-npm install
-pwd
-cd www
-npm run start
 nvm use 23
 nvm install 23
-npm run start
-npm install
-npm run start
-npm install npm
-npm install
-npm run start
-nvm use 16
-nvm install 16
-npm install
-npm instzll npm
-npm instzlal npm
-npm install npm
-npm install
-node -v
+npm install npm@latest -g
 npm -v
-cd ..
-rm -rf www
-npm init wasm-webpack-app www
-node -v
-nvm use 24
-history |grep nvm
-nvm use 23
-rm -rf www
-history
-wasm-pack build
-npm init wasm-app www
-npm install
-cd www
-npm install
-npm run start
-cd /home/var/www/etnic/yapaka
-ddev start
-cd /home/var/www/jamblinnes/rust/wasm-game-of-life
-wasm-pack test --headless --firefox
-wasm-pack test --headless --brave
-wasm-pack test --headless --chrome
-wasm-pack test --headless --firefox
-ls -la /usr/bin/firefox
-wasm-pack -V
-rustc -V
-cargo install wasm-bindgen-cli
-history |grep cargo
-cargo help
-cargo build
-wasm-pack build
-npm help init
-wasm-pack build
-npm install
-cd pkg
-npm install
-npm run start
-cd ..
-npm init wasm-app www
-cd www
-npm install
-npm run start
-nodejs -v
-node -v
-nvm use 23
-cd ..
-npm init wasm-app www
-cd www
-npm install
-npm run start
+npm install webpack -g
+npm install webpack-cli -g
+npm install webpack-dev-server -g
+
+```
+
+```
+vi ~/.zshrc
+```
+```
 export NODE_OPTIONS=--openssl-legacy-provider
+nvm use 23
+```
+```
 source ~/.zshrc
+```
+
+Install wasm-pack
+---
+```
+curl https://wasm-bindgen.github.io/wasm-pack/installer/init.sh -sSf | sh
+```
+or (may be better to be align with the rustc version)
+```
+cargo install wasm-pack
+```
+
+To list all globally instally installed crates : 
+```
+cargo install --list
+```
+or 
+```
+ls ~/.cargo/bin/
+```
+
+version of installed wasm-bindgen
+---
+```
+wasm-bindgen -V
+```
+Note the version of wasm-bindgen installed : to be used later in Cargo.toml
+wasm-bindgen 0.2.126
+
+
+
+
+
+Install the project 
+https://github.com/cargo-generate/cargo-generate
+
+```
+cargo install cargo-generate
+cargo generate --git https://github.com/rustwasm/wasm-pack-template
+```
+
+Enter Project :  Name wasm-game-of-life  
+
+Edit Cargo.toml   
+Be sure to update the version of wasm-bindgen to the latest stable version
+
+
+```
+[dependencies]
+wasm-bindgen = "0.2.126"
+...
+[dev-dependencies]
+wasm-bindgen-test = "0.3.76"
+```
+
+
+Build the Project : Generate the WASM and the npm package ./pkg
+---
+https://rustwasm.github.io/docs/book/game-of-life/hello-world.html#build-the-project
+
+```
+wasm-pack build
+```
+
+
+Putting it into a Web Page  
+---
+https://rustwasm.github.io/docs/book/game-of-life/hello-world.html#putting-it-into-a-web-page
+
+
+```
+npm init wasm-app www
+cd www
+npm install
+```
+
+
+Serving Locally
+---
+https://rustwasm.github.io/docs/book/game-of-life/hello-world.html#serving-locally
+
+```
+cd www
 npm run start
-cd ..
-git clone git@github.com:christophe-hubert/learning-rust.git
-l
-cd learning-rust
-l
 ```
