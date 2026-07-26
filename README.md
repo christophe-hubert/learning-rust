@@ -12,31 +12,26 @@ https://rustwasm.github.io/docs/book/game-of-life/introduction.html
 
 
 
-Install NVM + latest node
+Install NVM +  node V24
 ---
 
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.6/install.sh | bash
 source ~/.zshrc
 nvm -v
-nvm install node
-node -v
-nvm use 23
-nvm install 23
+nvm install 24
 npm install npm@latest -g
 npm -v
-npm install webpack -g
-npm install webpack-cli -g
-npm install webpack-dev-server -g
-
 ```
+
+Resolve certains problems
+---
 
 ```
 vi ~/.zshrc
 ```
 ```
-export NODE_OPTIONS=--openssl-legacy-provider
-nvm use 23
+nvm use 24
 ```
 ```
 source ~/.zshrc
@@ -86,7 +81,7 @@ Enter Project :  Name wasm-game-of-life
 Edit Cargo.toml   
 Be sure to update the version of wasm-bindgen to the latest stable version
 
-
+edit Cargo.toml
 ```
 [dependencies]
 wasm-bindgen = "0.2.126"
@@ -117,11 +112,50 @@ npm install
 ```
 
 
+[https://github.com/rustwasm/wasm-pack-template/issues/74, ](https://github.com/rustwasm/wasm-pack-template/issues/74#issuecomment-2657388223)
+edit www/webpack.config.js
+
+```
+module.exports = {
+  entry: "./bootstrap.js",
+    experiments: {
+     asyncWebAssembly: true
+    },
+```
+
+
+
+
+Using our Local wasm-game-of-life Package in www
+---
+edit www/package.json
+```
+{
+  // ...
+  "dependencies": {                     // Add this three lines block!
+    "wasm-game-of-life": "file:../pkg"
+  },
+  "devDependencies": {
+   "webpack": "^5.98.0",
+   "webpack-cli": "^6.0.1",
+   "webpack-dev-server": "^5.2.0",
+   "copy-webpack-plugin": "^5.0.0"
+  }
+}
+
+```
+
+
+Webpack : not sure , check www/node_modules
+---
+```
+npm install  webpack webpack-cli  webpack-dev-server
+```
+
 Serving Locally
 ---
 https://rustwasm.github.io/docs/book/game-of-life/hello-world.html#serving-locally
 
 ```
-cd www
 npm run start
 ```
